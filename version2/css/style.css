@@ -1,0 +1,186 @@
+/*
+# See AUTHORS for a list of contributors
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation; either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General
+# Public License along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+*/
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Open Sans Light"), local("OpenSans-Light"), url("http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Open Sans"), local("OpenSans"), url("http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff") format("woff");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url("http://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Open Sans Bold"), local("OpenSans-Bold"), url("http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: italic;
+    font-weight: 300;
+    src: local("Open Sans Light Italic"), local("OpenSansLight-Italic"), url("http://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxh_xHqYgAV9Bl_ZQbYUxnQU.woff") format("woff");
+}
+/*
+{
+@amarillo :#FCD700;
+@gris : #F9F9F9;
+@rojo :  #F3252B;
+@negro : #333;
+@grisOscuro : #EEE;
+}
+*/
+body {
+  padding-top: 15px;
+  padding-bottom: 40px;
+  background-color: #F9F9F9;
+  font: 10pt 'Open Sans',Helmet,Freesans,sans-serif;
+}
+nav > ul > li > a,
+nav > ul > li > a:focus { color: #F3252B;}
+body a:hover { color: #333;}
+body a.em {font-weight: 700;}
+h2 {font-weight: 700;  letter-spacing: -1px; line-height: 1em;}
+
+.font-light {font-weight: 300; text-indent: -1;}
+.font-normal { font-weight: 400; }
+.font-semibold {font-weight: 600; }
+.font-bold {font-weight: 700; }
+.font-italic {font-weight: 300;  font-style: italic;}
+
+
+div.index h2{ font-size: 20pt;}
+div.index form {margin-top: 5em;}
+div.index form > * {  margin-top:15px; }
+
+
+header {background-color: #F9F9F9; font-size: 9pt; border-radius: 7px; padding: 15px 0; }
+header > p,
+header > div,
+header * { margin: auto;}
+header.cliente > p.logo { margin-top: auto; }
+header > p > img {  max-height: 50px; min-height: 40px; margin-left:-20px; padding:0;}
+header.cliente > p.logo > img { max-height: 90px;  min-height: 40px; margin:0; padding:0;}
+header h2 { margin:0;}
+#navegacion > li > a,
+#navegacion > li > a:focus { color: #F3252B; font-size: 13pt;}
+#navegacion > li > a:hover { color: #333;}
+li:first-letter
+.espacio {margin-bottom: 100px;}
+
+#mostrarDatos,
+header.cliente,
+header.admin,
+div.cliente,
+div.admin {background-color: white; border-radius: 5px; }
+div.cliente,
+div.admin  { margin-top: 40px; }
+#mostrarDatos ul {margin:30px 10px;}
+#mostrarDatos li {margin-top: 80px;}
+#mostrarDatos li .fecha {color: grey; margin-top:14px; font-size: 25px; text-indent: -2em; font-weight: 300; padding:0;}
+#mostrarDatos img {max-width: 100%;}
+#mostrarDatos iframe { display: block; margin:auto;}
+#mostrarDatos hr { border:0;}
+#mostrarDatos li > p { font-size: 13pt; margin-top: 15px;}
+#mostrarDatos li > div.modal-dialog { display: none; }
+#mostrarDatos li > div.modal-dialog div.modal-content { background-color: #d9534f; } /* #f0ad4e */
+#mostrarDatos li > div.modal-dialog p { margin: 2px; padding: 10px 0; text-align: center; font-weight: 700; color: white; }
+#mostrarDatos li > div.modal-dialog p a { margin-left: 5px; color: inherit; display: inline-block; padding: 2px 10px; border-radius: 7px; background-color:  #f0ad4e; border: 2px solid transparent;}
+#mostrarDatos li > div.modal-dialog p a:hover { border: 2px solid #333;}
+#mostrarDatos .comentarios {}
+#mostrarDatos .comentarios li {}
+#mostrarDatos .comentarios p {}
+#datosDelCliente { margin-top: 20px; margin-bottom: 22px;}
+#datosDelCliente > div { margin:0; padding:0;}
+#datosDelCliente div > button,
+#datosDelCliente div > button:hover,
+#datosDelCliente div > button:focus { margin-top: 1.5em;}
+
+
+div.admin form label { font-size: 10pt; }
+#datosDelCliente button,
+#datosDelCliente button:hover,
+div.cliente  form button,
+div.cliente  form button:hover,
+div.admin form button,
+div.admin form button:hover  { background-color: #F3252B; border-color:  #F9F9F9; margin-top: 1em; color: white; text-shadow: 1px 1px #D02025;}
+div.index > form.form-signin > button:focus,
+div.index > form.form-signin > button:hover,
+div.index > form.form-signin > button { background-color: #F3252B; border-color:  #F9F9F9; color: white; text-shadow: 1px 1px #D02025;}
+.admin div label { font-size: 12pt; }
+
+.adminSugerencias li {margin-bottom:30px;}
+.sugerenciasTexto {font-size: 20pt; margin-top:35px; margin-bottom:25px;}
+div.cliente > form#sugerencias button { margin:0;}
+
+div.text-warning > p.bg-warning { padding: 15px; font-size: 1.1em;}
+
+div.admin table.actualizar {}
+div.admin table.show { display: table !important;}
+div.admin tr.show { display: table-row !important; border: none; }
+div.admin td > img { max-height: 45px;}
+td p.status { border-radius: 2px; padding:2px; color: inherit;}
+
+
+ #userActivos {}
+    #userInactivos {}
+    div.listUser {
+      overflow: scroll; 
+      height: 350px;
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    div.listUser tbody tr td img {max-height: 60px;}
+    div.listUser tbody tr td.changeStatus a {display: inline-block; padding: 0.5em 1em; border-radius: 3px;  color: white;}
+    /*div.listUser tbody tr td.changeStatus a:hover { background-color: grey;}*/
+
+    div.listUser tbody tr td a.activo {  background-color: green; }
+    div.listUser tbody tr td a.inactivo {  background-color: red; }
+    div.admin span#refereshActivos {}
+
+
+
+.form-signin {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.form-signin input,
+.form-signin button {max-width: 330px; margin:auto;}
+.form-signin .form-signin-heading,
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
