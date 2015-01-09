@@ -20,6 +20,7 @@ include_once('admin.header.php');
 if(! ( $_SESSION['nivel']=='1' || $_SESSION['nivel']=='0' )  )
   header("Location: index.php");
 
+//Obtener listado de clientes
 $qClientes = "SELECT 
 	usuario, 
 	id_nivel, 
@@ -30,6 +31,8 @@ $qClientes = "SELECT
 FROM usuarios WHERE id_nivel = 2 AND state = 1 ORDER BY id;";
 $queryClientes = mysqli_query($cnx, $qClientes);
 
+
+//Obtener datos de un usuario/cliente puntual
 $usuarioCliente = isset($_POST['usuarioCliente']) ? mysqli_real_escape_string($cnx,$_POST['usuarioCliente']) : false;
 $fecha = isset($_POST['fecha']) ? mysqli_real_escape_string($cnx,$_POST['fecha']) : false;
 
@@ -81,11 +84,10 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 				 	<option value="">Mostrar Todos</option>
 				 	<?php 
 			          foreach($calendario as $numMes => $mes){
-			          		if ($numMes == $mesNow)
-			          			echo '<option selected="selected" value="'.$anioNow.'-'.$numMes.'-01">'.$mes.'</option>';
+			          		if ($numMes == $now['month'])
+			          			echo '<option selected="selected" value="'.$now['year'].'-'.$numMes.'-01">'.$mes.'</option>';
 			          		else
             					echo '<option value="'.$anioNow.'-'.$numMes.'-01">'.$mes.'</option>';
-
           				}
         			?>
 				 </select>

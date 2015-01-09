@@ -47,5 +47,16 @@ $calendario = array (
   11 => 'Noviembre',
   12 => 'Diciembre'
   );
+$now = array();
+@ $now['year'] = (date("n") != 1) ? date("Y") : ( date("Y") -1 );
+@ $now['month'] = (date("n") != 1) ? (date("n") - 1) : 12 ;
+@ $now['day'] = 01;
+
+$anio = array();
+$anioNumero = 2010;
+for($i = 0; $i < 30 ; $i++){
+  array_push($anio, $anioNumero);
+  $anioNumero++;
+}
 }
 ?>

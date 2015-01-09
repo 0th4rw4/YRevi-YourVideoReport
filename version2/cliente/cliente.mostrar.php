@@ -47,10 +47,6 @@ else $qEntradas .= " ORDER by fecha DESC LIMIT 1"; //mostrar la ultima entrada L
 $qEntradas .= " ;";
 $queryEntradas = mysqli_query($cnx, $qEntradas);
 
-$misaleneas = array();
-@ $misaleneas['9'] = 2014;// date("Y"); //Anio
-@ $misaleneas['10'] = date("n"); //Mes
-$misaleneas['11'] = '01'; //Dia
 }
 ?>
 <div class="container">
@@ -62,10 +58,10 @@ $misaleneas['11'] = '01'; //Dia
 				 	<option value="todos">Mostrar Todos</option>
 				 	<?php 
 			          foreach($calendario as $numMes => $mes){
-			          		if ($numMes == $misaleneas['10'])
-			          			echo '<option selected="selected" value="'.$misaleneas['9'].'-'.$numMes.'-01">'.$mes.'</option>';
+			          		if ($numMes == $now['month'])
+			          			echo '<option selected="selected" value="'.$now['year'].'-'.$numMes.'-01">'.$mes.'</option>';
 			          		else
-			          			echo '<option value="'.$misaleneas['9'].'-'.$numMes.'-01">'.$mes.'</option>';
+			          			echo '<option value="'.$now['year'].'-'.$numMes.'-'.$now['day'].'">'.$mes.'</option>';
           				}
         			?>
 				 </select>

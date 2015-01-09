@@ -112,12 +112,6 @@ $qClientes = "SELECT
 FROM usuarios WHERE id_nivel = 2 AND state = 1 ORDER BY id;";
 $queryClientes = mysqli_query($cnx, $qClientes);
 
-$anio = array();
-$anioNumero = 2010;
-for($i = 0; $i < 30 ; $i++){
-  array_push($anio, $anioNumero);
-  $anioNumero++;
-}
 ?>
 
 <div class="container admin">
