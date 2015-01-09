@@ -48,7 +48,7 @@ $qEntradas .= " ;";
 $queryEntradas = mysqli_query($cnx, $qEntradas);
 
 $misaleneas = array();
-@ $misaleneas['9'] = date("Y"); //Anio
+@ $misaleneas['9'] = 2014;// date("Y"); //Anio
 @ $misaleneas['10'] = date("n"); //Mes
 $misaleneas['11'] = '01'; //Dia
 }
