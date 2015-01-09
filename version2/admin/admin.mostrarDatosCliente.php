@@ -54,7 +54,7 @@ SELECT
 
 if($fecha) $qEntradas .= "AND fecha = '$fecha' ";
 
-$qEntradas .= " ORDER BY entradas.fecha DESC;";
+$qEntradas .= " ORDER BY entradas.fecha ASC;";
 $queryEntradas = mysqli_query($cnx, $qEntradas);
 }
 ?>

@@ -40,7 +40,7 @@ SELECT
  WHERE usuarios.usuario = '$usuarioCliente' AND status = '1' ";
 
 if($fecha && $fecha != "todos") $qEntradas .= "AND fecha = '$fecha' ";
-elseif ($fecha && $fecha == "todos") $qEntradas .= " ORDER by fecha DESC ";
+elseif ($fecha && $fecha == "todos") $qEntradas .= " ORDER by fecha ASC ";
 else $qEntradas .= " ORDER by fecha DESC LIMIT 1"; //mostrar la ultima entrada LIMIT 1
 
 
