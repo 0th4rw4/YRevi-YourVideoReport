@@ -22,7 +22,9 @@ if(! isset( $_SESSION['nivel'] ))
 $usuarioCliente = isset($_SESSION['login']) ? mysqli_real_escape_string($cnx,$_SESSION['login']) : false;
 $mesDia = isset($_POST['mesDia']) ? mysqli_real_escape_string($cnx,$_POST['mesDia']) : false;
 $anio_ = isset($_POST['anio']) ? mysqli_real_escape_string($cnx,$_POST['anio']) : false;
-$fecha = $anio_.'-'.$mesDia;
+
+$fecha = ( $mesDia && $mesDia == "todos" ) ? "todos" : null; 
+$fecha = ( $fecha != null && $fecha != false ) ? $anio_.'-'.$mesDia : false;
 
 if($usuarioCliente){
 $qEntradas = "
@@ -43,7 +45,7 @@ SELECT
 
 if($fecha && $fecha != "todos") $qEntradas .= "AND fecha = '$fecha' ";
 elseif ($fecha && $fecha == "todos") $qEntradas .= " ORDER by fecha ASC ";
-else $qEntradas .= " ORDER by fecha DESC LIMIT 1"; //mostrar la ultima entrada LIMIT 1
+else $qEntradas .= " ORDER by fecha ASC LIMIT 1"; //mostrar la ultima entrada LIMIT 1
 
 
 $qEntradas .= " ;";
