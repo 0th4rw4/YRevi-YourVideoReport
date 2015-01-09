@@ -97,6 +97,11 @@ if($addDatos == "true"  && $fecha && $id_Cliente){
 elseif($addDatos == "true") $_SESSION['error.addDatos'] = 'Faltan Datos';
 else $_SESSION['error.addDatos'] = false;
 
+//Usabilidad, guardar ultimo usuario usado
+if($id_Cliente){
+  $_SESSION['log.idUsuario'] = $id_Cliente;
+}
+
 //Codigo para la interfaz grafica
 
 $id_Cliente = array();
@@ -132,7 +137,13 @@ $queryClientes = mysqli_query($cnx, $qClientes);
       <select id="emailCliente" name="emailCliente" class="form-control">
         <?php 
           while($clienteRTA=mysqli_fetch_assoc($queryClientes)){
-            echo '<option value="'.$clienteRTA['id'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
+            if( $clienteRTA['id'] == $_SESSION['log.idUsuario'] ){
+              $_SESSION['log.mailUsuario'] = $clienteRTA['usuario'];
+              echo '<option selected="selected" value="'.$clienteRTA['id'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
+            }
+            else{
+              echo '<option value="'.$clienteRTA['id'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
+            }
           }
         ?>
       </select>

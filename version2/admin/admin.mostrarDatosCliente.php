@@ -71,10 +71,10 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 					 <select class="form-control" name="usuarioCliente" id="usuarioCliente">
 					 <?php
 					 	while($clienteRTA=mysqli_fetch_assoc($queryClientes)){
-					 		$anioNow = $clienteRTA['anioNow'];
-					 		$mesNow = $clienteRTA['mesNow'];
-					 		$diaNow = $clienteRTA['diaNow'];
-					 		echo '<option value="'.$clienteRTA['usuario'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
+					 		if( $_SESSION['log.mailUsuario'] == $clienteRTA['usuario'] )
+					 			echo '<option selected="selected" value="'.$clienteRTA['usuario'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
+					 		else
+					 			echo '<option value="'.$clienteRTA['usuario'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
 					 	}
 					 ?>
 					 </select>
