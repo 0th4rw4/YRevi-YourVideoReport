@@ -21,42 +21,11 @@ ini_set('display_errors', 1 );
 $cnx = mysqli_connect('localhost','root','PuntoRojo1970','puntoRojo');
 @ session_start();
 if(! isset($_SESSION['login']) && $loop!=true)
-  header("Location: http://localhost/proyectos/puntoRojo/administracionPuntoRojo/version2/index.php?loop=true");
+  header("Location: http://reportes1.local/index.php?loop=true");
 
 if($loop!=true){
-$url = 'http://localhost/proyectos/puntoRojo/administracionPuntoRojo/version2/';
-include('../modulos/index.php');
-$directorioReportes = 'upload/reportes'; //upload/reportes/cliente@empresa.com/2014/01/imagen.jpg
-$directorioLogos = 'upload/logos';
-$dirImgs = 'img';
-$confReport = array(
-  "imgWidth" => '200px;',
-  "imgHeight" => '200px;'
-);
-$calendario = array ( 
-  1 => 'Enero',
-  2 => 'Febrero',
-  3 => 'Marzo',
-  4 => 'Abril',
-  5 => 'Mayo',
-  6 => 'Junio',
-  7 => 'Julio',
-  8 => 'Agosto',
-  9 => 'Septiembre',
-  10 => 'Octubre',
-  11 => 'Noviembre',
-  12 => 'Diciembre'
-  );
-$now = array();
-@ $now['year'] = (date("n") != 1) ? date("Y") : ( date("Y") -1 );
-@ $now['month'] = (date("n") != 1) ? (date("n") - 1) : 12 ;
-@ $now['day'] = 01;
-
-$anio = array();
-$anioNumero = 2010;
-for($i = 0; $i < 30 ; $i++){
-  array_push($anio, $anioNumero);
-  $anioNumero++;
-}
+  $url = 'http://reportes1.local/';
+  include('../modulos/index.php');
+  include('config.php');
 }
 ?>

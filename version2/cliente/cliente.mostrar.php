@@ -20,7 +20,9 @@ if(! isset( $_SESSION['nivel'] ))
   header("Location: index.php");
 
 $usuarioCliente = isset($_SESSION['login']) ? mysqli_real_escape_string($cnx,$_SESSION['login']) : false;
-$fecha = isset($_POST['fecha']) ? mysqli_real_escape_string($cnx,$_POST['fecha']) : false;
+$mesDia = isset($_POST['mesDia']) ? mysqli_real_escape_string($cnx,$_POST['mesDia']) : false;
+$anio_ = isset($_POST['anio']) ? mysqli_real_escape_string($cnx,$_POST['anio']) : false;
+$fecha = $anio_.'-'.$mesDia;
 
 if($usuarioCliente){
 $qEntradas = "
@@ -51,24 +53,40 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 ?>
 <div class="container">
 	<form class="form-horizontal clearfix" role="form" name="datosDelCliente" id="datosDelCliente" method="post" action="index.php">
-		<div class="form-group col-sm-5 col-sm-push-4 ">
-			 <div class="col-sm-7 col-sm-offset-1">
-			 	 <label for="fecha" class="text-center col-sm-12 font-semibold">Elija un reporte mensual</label>
-			 	 <select class="form-control col-sm-12" name="fecha" id="fecha">
-				 	<option value="todos">Mostrar Todos</option>
-				 	<?php 
-			          foreach($calendario as $numMes => $mes){
-			          		if ($numMes == $now['month'])
-			          			echo '<option selected="selected" value="'.$now['year'].'-'.$numMes.'-01">'.$mes.'</option>';
-			          		else
-			          			echo '<option value="'.$now['year'].'-'.$numMes.'-'.$now['day'].'">'.$mes.'</option>';
-          				}
-        			?>
-				 </select>
+		<div class="form-group row">
+			 <div class="col-md-2 col-md-offset-4">
+			 	 <label for="fecha" class="text-center">Elija el reporte del mes
+					 <select class="form-control" name="mesDia" id="fecha" >
+					 	<option value="">Mostrar Todos</option>
+					 	<?php 
+				          foreach($calendario as $numMes => $mes){
+				          		if ($numMes == $now['month'])
+				          			echo '<option selected="selected" value="'.$numMes.'-01">'.$mes.'</option>';
+				          		else
+	            					echo '<option value="'.$numMes.'-01">'.$mes.'</option>';
+	          				}
+	        			?>
+					 </select>
+				 </label>
 			 </div>
 
-			 <div class="col-sm-2">
-			 	 <button type="submit" class="btn btn-info font-normal">Ver</button>
+			  <div class="col-md-2">
+			 	 <label for="fecha" class="text-center">Elija un año
+					 <select class="form-control" name="anio" id="fecha" >
+					 	<?php 
+				          foreach($anio as $numero ){
+				          		if ($numero == $now['year'])
+				          			echo '<option selected="selected" value="'.$numero.'">'.$numero.'</option>';
+				          		else
+	            					echo '<option value="'.$numero.'">'.$numero.'</option>';
+	          				}
+	        			?>
+					 </select>
+				 </label>
+			 </div>
+
+			 <div class="col-md-1">
+			 	 <button type="submit" class="btn btn-info">Ver</button>
 			 </div>
 		</div>
 	</form>

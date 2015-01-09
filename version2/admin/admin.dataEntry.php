@@ -132,9 +132,6 @@ $queryClientes = mysqli_query($cnx, $qClientes);
       <select id="emailCliente" name="emailCliente" class="form-control">
         <?php 
           while($clienteRTA=mysqli_fetch_assoc($queryClientes)){
-            $anioNow = $clienteRTA['anioNow'];
-            $mesNow = $clienteRTA['mesNow'];
-            $diaNow = $clienteRTA['diaNow'];
             echo '<option value="'.$clienteRTA['id'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
           }
         ?>
@@ -148,7 +145,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
        <select id="mes" name="mes" class="col-sm-6">
         <?php 
           foreach($calendario as $numMes => $mes){
-            if ($numMes == $mesNow)
+            if ($numMes == $now['month'])
               echo '<option selected="selected" value="'.$numMes.'">'.$mes.'</option>';
             else
               echo '<option value="'.$numMes.'">'.$mes.'</option>';
@@ -158,8 +155,8 @@ $queryClientes = mysqli_query($cnx, $qClientes);
       <select id="anio" name="anio" class="col-sm-6">
         <?php
           foreach($anio as $anioCada){
-            if ($anioCada == $anioNow)
-              echo '<option selected="selected" value="'.$anioNow.'">'.$anioNow.'</option>';
+            if ($anioCada == $now['year'])
+              echo '<option selected="selected" value="'.$anioCada .'">'.$anioCada .'</option>';
             else
               echo '<option value="'.$anioCada.'">'.$anioCada.'</option>';
           }

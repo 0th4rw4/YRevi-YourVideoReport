@@ -34,7 +34,9 @@ $queryClientes = mysqli_query($cnx, $qClientes);
 
 //Obtener datos de un usuario/cliente puntual
 $usuarioCliente = isset($_POST['usuarioCliente']) ? mysqli_real_escape_string($cnx,$_POST['usuarioCliente']) : false;
-$fecha = isset($_POST['fecha']) ? mysqli_real_escape_string($cnx,$_POST['fecha']) : false;
+$mesDia = isset($_POST['mesDia']) ? mysqli_real_escape_string($cnx,$_POST['mesDia']) : false;
+$anio_ = isset($_POST['anio']) ? mysqli_real_escape_string($cnx,$_POST['anio']) : false;
+$fecha = $anio_.'-'.$mesDia;
 
 if($usuarioCliente){
 $qEntradas = "
@@ -63,37 +65,54 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 ?>
 <div class="container admin">
 	<form class="form-horizontal" role="form" name="datosDelCliente" id="datosDelCliente" method="post" action="admin.mostrarDatosCliente.php">
-		<div class="form-group col-sm-12">
-			 <div class="col-sm-4 col-sm-offset-1">
-			 	 <label for="usuarioCliente" class="control-label col-sm-offset-4">Nombre Cliente</label>
-				 <select class="form-control" name="usuarioCliente" id="usuarioCliente">
-				 <?php
-				 	while($clienteRTA=mysqli_fetch_assoc($queryClientes)){
-				 		$anioNow = $clienteRTA['anioNow'];
-				 		$mesNow = $clienteRTA['mesNow'];
-				 		$diaNow = $clienteRTA['diaNow'];
-				 		echo '<option value="'.$clienteRTA['usuario'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
-				 	}
-				 ?>
-				 </select>
+		<div class="form-group col-md-12">
+			 <div class="col-md-4 col-md-offset-1">
+			 	 <label for="usuarioCliente" class="text-center">Nombre Cliente
+					 <select class="form-control" name="usuarioCliente" id="usuarioCliente">
+					 <?php
+					 	while($clienteRTA=mysqli_fetch_assoc($queryClientes)){
+					 		$anioNow = $clienteRTA['anioNow'];
+					 		$mesNow = $clienteRTA['mesNow'];
+					 		$diaNow = $clienteRTA['diaNow'];
+					 		echo '<option value="'.$clienteRTA['usuario'].'">'.$clienteRTA['nombre'].' - '.$clienteRTA['usuario'].'</option>';
+					 	}
+					 ?>
+					 </select>
+				  </label>
 			 </div>
 
-			 <div class="col-sm-4">
-			 	 <label for="fecha" class="control-label col-sm-offset-4">Fecha</label>
-				 <select class="form-control" name="fecha" id="fecha" >
-				 	<option value="">Mostrar Todos</option>
-				 	<?php 
-			          foreach($calendario as $numMes => $mes){
-			          		if ($numMes == $now['month'])
-			          			echo '<option selected="selected" value="'.$now['year'].'-'.$numMes.'-01">'.$mes.'</option>';
-			          		else
-            					echo '<option value="'.$anioNow.'-'.$numMes.'-01">'.$mes.'</option>';
-          				}
-        			?>
-				 </select>
+			 <div class="col-md-2">
+			 	 <label for="fecha" class="text-center">Mes
+					 <select class="form-control" name="mesDia" id="fecha" >
+					 	<option value="">Mostrar Todos</option>
+					 	<?php 
+				          foreach($calendario as $numMes => $mes){
+				          		if ($numMes == $now['month'])
+				          			echo '<option selected="selected" value="'.$numMes.'-01">'.$mes.'</option>';
+				          		else
+	            					echo '<option value="'.$numMes.'-01">'.$mes.'</option>';
+	          				}
+	        			?>
+					 </select>
+				 </label>
 			 </div>
 
-			 <div class="col-sm-2">
+			  <div class="col-md-2">
+			 	 <label for="fecha" class="text-center">Año
+					 <select class="form-control" name="anio" id="fecha" >
+					 	<?php 
+				          foreach($anio as $numero ){
+				          		if ($numero == $now['year'])
+				          			echo '<option selected="selected" value="'.$numero.'">'.$numero.'</option>';
+				          		else
+	            					echo '<option value="'.$numero.'">'.$numero.'</option>';
+	          				}
+	        			?>
+					 </select>
+				 </label>
+			 </div>
+
+			 <div class="col-md-1">
 			 	 <button type="submit" class="btn btn-info">Ver</button>
 			 </div>
 		</div>
