@@ -36,7 +36,12 @@ $queryClientes = mysqli_query($cnx, $qClientes);
 $usuarioCliente = isset($_POST['usuarioCliente']) ? mysqli_real_escape_string($cnx,$_POST['usuarioCliente']) : false;
 $mesDia = isset($_POST['mesDia']) ? mysqli_real_escape_string($cnx,$_POST['mesDia']) : false;
 $anio_ = isset($_POST['anio']) ? mysqli_real_escape_string($cnx,$_POST['anio']) : false;
-$fecha = $anio_.'-'.$mesDia;
+if( $mesDia && $mesDia == "todos" )
+	$fecha = "todos"; 
+else if( $mesDia && $anio_ )
+	$fecha = $anio_.'-'.$mesDia;
+else
+	$fecha = false;
 
 if($usuarioCliente){
 $qEntradas = "

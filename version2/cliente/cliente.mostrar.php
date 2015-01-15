@@ -23,8 +23,12 @@ $usuarioCliente = isset($_SESSION['login']) ? mysqli_real_escape_string($cnx,$_S
 $mesDia = isset($_POST['mesDia']) ? mysqli_real_escape_string($cnx,$_POST['mesDia']) : false;
 $anio_ = isset($_POST['anio']) ? mysqli_real_escape_string($cnx,$_POST['anio']) : false;
 
-$fecha = ( $mesDia && $mesDia == "todos" ) ? "todos" : null; 
-$fecha = ( $fecha != null && $fecha != false ) ? $anio_.'-'.$mesDia : false;
+if( $mesDia && $mesDia == "todos" )
+	$fecha = "todos"; 
+else if( $mesDia && $anio_ )
+	$fecha = $anio_.'-'.$mesDia;
+else
+	$fecha = false;
 
 if($usuarioCliente){
 $qEntradas = "
