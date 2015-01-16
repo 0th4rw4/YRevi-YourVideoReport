@@ -43,7 +43,7 @@ while($selectRTA = mysqli_fetch_assoc($select) ){
 <header class="container clearfix admin">
 
 	 <p class="col-sm-3">
-    	<img src="<?php echo '../'.$dirImgs.'/posicionamiento-web-2.png'; ?>"  class="logoPuntoRojo" alt="Punto Rojo" />
+    	<a href="/"><img src="<?php echo '../'.$dirImgs.'/posicionamiento-web-2.png'; ?>"  class="logoPuntoRojo" alt="Punto Rojo" /></a>
   	</p>
   	<nav class="clearfix col-sm-9 text-right">
 		<ul class="list-inline">
