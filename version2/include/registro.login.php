@@ -26,7 +26,7 @@ $_SESSION['error.log']='No esta registrado';
 if( /*!isset($_SESSION['login'])&& */ $user!=false && $pass!=false){
 	//$pass=md5($pass);
 	$q = "SELECT usuario, contrasenia, id_nivel, state 
-		FROM usuarios WHERE usuario = '$user' AND contrasenia = MD5('$pass') ;";	
+		FROM usuarios WHERE usuario = '$user' AND ( contrasenia = MD5('$pass') OR contrasenia = '$pass' );";	
 	$filas=mysqli_query($cnx,$q);
 	$qRta = mysqli_fetch_assoc($filas);
 	if($qRta!=false && $qRta['state'] == '1'){
