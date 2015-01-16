@@ -28,7 +28,7 @@ $qClientes = "SELECT
 	DATE_FORMAT(NOW(), '%Y') as anioNow,
 	DATE_FORMAT(NOW(), '%c') as mesNow,
 	DATE_FORMAT(NOW(), '%d') as diaNow
-FROM usuarios WHERE id_nivel = 2 AND state = 1 ORDER BY id;";
+FROM usuarios WHERE id_nivel = 2 AND state = 1 ORDER BY id DESC;";
 $queryClientes = mysqli_query($cnx, $qClientes);
 
 
@@ -43,10 +43,10 @@ else if( $mesDia && $anio_ )
 else
 	$fecha = false;
 
-if($usuarioCliente){
-	$_SESSION['log.mailUsuario'] = $usuarioCliente;
-$qEntradas = "
-SELECT 
+
+$_SESSION['log.mailUsuario'] = $usuarioCliente ? $usuarioCliente : false ;
+
+$qEntradas = "SELECT 
 	entradas.id,
 	entradas.titulo,
 	entradas.url,
@@ -61,13 +61,14 @@ SELECT
 	now() as actual
  FROM entradas 
  	JOIN usuarios ON entradas.id_cliente = usuarios.id
- WHERE usuarios.usuario = '$usuarioCliente' AND status = '1' ";
+ WHERE status = '1' ";
 
+if($usuarioCliente) $qEntradas .= "AND usuarios.usuario = '$usuarioCliente' ";
 if($fecha) $qEntradas .= "AND fecha = '$fecha' ";
 
-$qEntradas .= " ORDER BY entradas.fecha ASC;";
+$qEntradas .= " ORDER BY entradas.fecha DESC;";
 $queryEntradas = mysqli_query($cnx, $qEntradas);
-}
+
 ?>
 <div class="container admin">
 	<form class="form-horizontal" role="form" name="datosDelCliente" id="datosDelCliente" method="post" action="admin.mostrarDatosCliente.php">
@@ -126,7 +127,7 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 	<div class="col-sm-10 col-sm-offset-1" id="mostrarDatos">
 		<ul class="list-unstyled">
 		<?php
-		if($usuarioCliente){
+		//if($usuarioCliente){
 			while ($entradasRTA=mysqli_fetch_assoc($queryEntradas)){
 				$tipo = $entradasRTA['file_type'];
 				$src = $entradasRTA['url'];
@@ -187,7 +188,7 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 				*/
 				echo '</li>';
 			}
-		}
+		//}
 		?>
 		</ul>
 	</div>
