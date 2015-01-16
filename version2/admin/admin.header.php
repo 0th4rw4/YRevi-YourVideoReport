@@ -17,13 +17,6 @@
 # <http://www.gnu.org/licenses/>.
 */
 include_once('../config/conexion.php');
-$select = "SELECT nombre, logo, usuario FROM usuarios WHERE usuario = '$_SESSION[login]'; ";
-
-$select = mysqli_query($cnx, $select);
-while($selectRTA = mysqli_fetch_assoc($select) ){
-  $imagenUsuario = '../upload/logos/'.$selectRTA['logo'];
-  $nombreUsuario = $selectRTA['nombre'];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +25,7 @@ while($selectRTA = mysqli_fetch_assoc($select) ){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Reportes - <?php echo $nombreUsuario; ?></title>
+    <title>SEO Reportes</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
@@ -48,11 +41,10 @@ while($selectRTA = mysqli_fetch_assoc($select) ){
   	<nav class="clearfix col-sm-9 text-right">
 		<ul class="list-inline">
     	<li><a class="font-bold" href="index.php">Carga de Reportes</a></li>
-      <li><a href="admin.mostrarDatosCliente.php">Mostrar Reportes</a></li>
-			<li><a class="font-bold" href="admin.addUser.php">Alta a Clientes</a></li>
-			<li><a href="admin.addAdmin.php">Agregar Administradores</a></li>
-			<!--<li><a href="admin.actualizar.php">Modificar Datos</a></li>-->
-      <li><a href="admin.sugerenciasMostrar.php">Mostrar Sugerencias</a></li>
+      <li><a href="admin.mostrarDatosCliente.php">Reportes</a></li>
+			<li><a class="font-bold" href="admin.addUser.php">Clientes</a></li>
+			<li><a href="admin.addAdmin.php">Usuarios</a></li><!-- Ustedes son administradores, esten orgullosos !! --> 
+      <li><a href="admin.sugerenciasMostrar.php">Ver Sugerencias</a></li>
       <li class="cerrar font-bold"><a href="../include/registro.login.php?kill">Salir</a></li>
 		</ul>
 	</nav>

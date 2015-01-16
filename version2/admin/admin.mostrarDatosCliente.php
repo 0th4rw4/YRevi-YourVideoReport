@@ -88,7 +88,7 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 				  </label>
 			 </div>
 
-			 <div class="col-md-2">
+			 <div class="col-md-3">
 			 	 <label for="fecha" class="text-center">Mes
 					 <select class="form-control" name="mesDia" id="fecha" >
 					 	<option value="">Mostrar Todos</option>
@@ -102,9 +102,7 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 	        			?>
 					 </select>
 				 </label>
-			 </div>
 
-			  <div class="col-md-2">
 			 	 <label for="fecha" class="text-center">Año
 					 <select class="form-control" name="anio" id="fecha" >
 					 	<?php 
@@ -120,7 +118,10 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 			 </div>
 
 			 <div class="col-md-1">
-			 	 <button type="submit" class="btn btn-info">Ver</button>
+			 	 <button type="submit" class="btn btn-info" style="margin-top: 1em; ">Ver</button>
+			 </div>
+			 <div class="col-md-1">
+			 	 <a href="/admin/admin.addUser.php" class="btn btn-warning" style="margin-top: 1em; color: #333333;" >Nuevo Cliente</a>
 			 </div>
 		</div>
 	</form>

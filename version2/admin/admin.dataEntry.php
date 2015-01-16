@@ -179,16 +179,16 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     </div> <!-- ./ row--> 
 
   <div class="row" style="margin-top: 10px; ">
-    <label for="tituloYoutube" class="col-sm-5 col-md-offset-1 text-center">Titulo Video Youtube
-    <div class="">
-      <input type="text" class="form-control" id="tituloYoutube" placeholder="Titulo" name="tituloYoutube" value="<?php echo $tituloYoutube ?>">
-    </div>
+    <label for="tituloYoutube" class="col-sm-4 col-md-offset-2 text-center">Titulo Video Youtube
+      <div>
+        <input type="text" class="form-control" id="tituloYoutube" placeholder="Titulo" name="tituloYoutube" value="<?php echo $tituloYoutube ?>">
+      </div>
     </label>
 
-     <label for="urlYoutube" class="col-sm-5 text-center">URL
-    <div class=""> 
-      <input type="text" class="form-control" id="urlYoutube" placeholder="URL" name="urlYoutube" value="<?php echo $urlYoutube ?>">
-    </div>
+     <label for="urlYoutube" class="col-sm-4 text-center">URL
+      <div> 
+        <input type="text" class="form-control" id="urlYoutube" placeholder="URL" name="urlYoutube" value="<?php echo $urlYoutube ?>">
+      </div>
     </label>
   </div><!-- ./ row--> 
 
@@ -208,8 +208,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
   </div>
 */?>
   <div class="form-group">
-    <p class="col-sm-12 text-center">Opcional</p>
-    <label for="comentario" class="col-sm-2 control-label">Comentario</label>
+    <label for="comentario" class="col-sm-2 control-label">Comentario <br /> Opcional</label>
     <div class="col-sm-9">
     	<textarea class="form-control" rows="3" id="comentario" name="comentario" placeholder="Comentario que acompaña el archivo"></textarea>
     </div>
