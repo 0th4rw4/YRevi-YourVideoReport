@@ -19,7 +19,7 @@
 $loop=true;
 include_once('../config/conexion.php');
 $user=isset($_POST['email']) ? mysqli_real_escape_string($cnx, $_POST['email']) : false;
-$pass=isset($_POST['password']) ? $_POST['password'] : false;
+$pass=isset($_POST['password']) ? mysqli_real_escape_string($cnx, $_POST['password']) : false;
 
 $_SESSION['error.log']='No esta registrado';
 

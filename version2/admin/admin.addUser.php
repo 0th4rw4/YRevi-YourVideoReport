@@ -217,7 +217,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
             <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
             <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
             <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\">**********</a></td>
+            <td data-role=\"changePassword\"><a href=\"#\"> $clientesRTA[contrasenia] </a></td>
           </tr>";
           endif;
           }
