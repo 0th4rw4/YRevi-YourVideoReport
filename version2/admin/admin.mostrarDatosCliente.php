@@ -44,6 +44,7 @@ else
 	$fecha = false;
 
 if($usuarioCliente){
+	$_SESSION['log.mailUsuario'] = $usuarioCliente;
 $qEntradas = "
 SELECT 
 	entradas.id,

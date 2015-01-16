@@ -131,9 +131,10 @@ $queryClientes = mysqli_query($cnx, $qClientes);
 
       <form class="form-horizontal" enctype="multipart/form-data" role="form" method="post" action="index.php">
       <input type="hidden" name="addDatos" value="true" />
-  <div class="form-group">
-    <label for="emailCliente" class="col-sm-2 control-label">URL Cliente</label>
-    <div class="col-sm-10">
+      <div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <label for="emailCliente" class="col-sm-12 text-center">URL Cliente</label>
+    <div class="col-sm-12">
       <select id="emailCliente" name="emailCliente" class="form-control">
         <?php 
           while($clienteRTA=mysqli_fetch_assoc($queryClientes)){
@@ -150,10 +151,9 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     </div>
   </div>
 
-    <div class="form-group">
-   <label class="col-sm-2 col-sm-offset-2 control-label">Fecha</label>
-    <div class="col-sm-4">
-       <select id="mes" name="mes" class="col-sm-6">
+    <div class="col-md-5">
+      <label class="col-sm-12 text-center">Fecha</label>
+       <select id="mes" name="mes" class="col-md-5">
         <?php 
           foreach($calendario as $numMes => $mes){
             if ($numMes == $now['month'])
@@ -163,7 +163,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
           }
         ?>
       </select>
-      <select id="anio" name="anio" class="col-sm-6">
+      <select id="anio" name="anio" class="col-md-5">
         <?php
           foreach($anio as $anioCada){
             if ($anioCada == $now['year'])
@@ -175,19 +175,22 @@ $queryClientes = mysqli_query($cnx, $qClientes);
       </select>
       <input type="hidden" name="dia" value="01">
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="tituloYoutube" class="col-sm-2 control-label">Titulo Video Youtube</label>
-    <div class="col-sm-4">
+    </div> <!-- ./ row--> 
+
+  <div class="row" style="margin-top: 10px; ">
+    <label for="tituloYoutube" class="col-sm-5 col-md-offset-1 text-center">Titulo Video Youtube
+    <div class="">
       <input type="text" class="form-control" id="tituloYoutube" placeholder="Titulo" name="tituloYoutube" value="<?php echo $tituloYoutube ?>">
     </div>
+    </label>
 
-     <label for="urlYoutube" class="col-sm-2 control-label">URL</label>
-    <div class="col-sm-4">
+     <label for="urlYoutube" class="col-sm-5 text-center">URL
+    <div class=""> 
       <input type="text" class="form-control" id="urlYoutube" placeholder="URL" name="urlYoutube" value="<?php echo $urlYoutube ?>">
     </div>
-  </div>
+    </label>
+  </div><!-- ./ row--> 
 
 <?php /*
 
@@ -207,7 +210,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
   <div class="form-group">
     <p class="col-sm-12 text-center">Opcional</p>
     <label for="comentario" class="col-sm-2 control-label">Comentario</label>
-    <div class="col-sm-10">
+    <div class="col-sm-9">
     	<textarea class="form-control" rows="3" id="comentario" name="comentario" placeholder="Comentario que acompaña el archivo"></textarea>
     </div>
   </div>

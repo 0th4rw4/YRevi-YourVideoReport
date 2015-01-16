@@ -184,3 +184,21 @@ td p.status { border-radius: 2px; padding:2px; color: inherit;}
 .form-signin .form-control:focus {
   z-index: 2;
 }
+
+h2 > a.close {
+  color: red;
+  text-transform: uppercase;
+  opacity: 0.8;
+  font-size: 1em;
+
+  background-color: rgba(30,15,15,0.3);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+
+}
+h2 > a.close:hover {
+   opacity: 1;
+   color: brown;
+}
