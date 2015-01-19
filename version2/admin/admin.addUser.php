@@ -73,7 +73,7 @@ endif;
     $_SESSION['error.addUser'] = false ;
     } 
   ?>
-    <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" action="admin.addUser.php">
+    <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" action="#">
     	<input type="hidden" name="addClientes" value="true" />
 
  <div class="form-group">
@@ -104,10 +104,6 @@ endif;
       <p class="help-block col-sm-12 text-center">Logo preferiblemente con transparencias en PNG</p>
     </div>
   </div>
-
-
- 
-
 
   <div class="form-group">
     <div class="col-sm-2 col-sm-offset-5">

@@ -117,6 +117,53 @@ $qClientes = "SELECT
 FROM usuarios WHERE id_nivel = 2 AND state = 1 ORDER BY id;";
 $queryClientes = mysqli_query($cnx, $qClientes);
 
+
+
+
+
+//Ingreso de clientes
+
+$addClientes = isset($_POST['addClientes'])?$_POST['addClientes']:false;
+
+$nombreClienteNuevo = isset($_POST['nombreClienteNuevo']) ? $_POST['nombreClienteNuevo']:false;
+$usuarioClienteNuevo = isset($_POST['usuarioClienteNuevo'])? $_POST['usuarioClienteNuevo']:false;
+$contraseniaNuevo = isset($_POST['contraseniaNuevo']) ? $_POST['contraseniaNuevo']:false;
+$logoClienteArray = isset($_FILES['logoCliente']) ? $_FILES['logoCliente'] : false;
+
+if($addClientes):
+
+foreach($usuarioClienteNuevo as $clave => $valor) :
+
+  $nombreClienteNuevo = isset($nombreClienteNuevo[$clave])? mysqli_real_escape_string($cnx, $nombreClienteNuevo[$clave]):false;
+  $usuarioClienteNuevo = isset($usuarioClienteNuevo[$clave])?mysqli_real_escape_string($cnx, $usuarioClienteNuevo[$clave]):false;
+  $contraseniaNuevo = isset($contraseniaNuevo[$clave])?mysqli_real_escape_string($cnx, $contraseniaNuevo[$clave]):false;
+  $logoCliente = isset($logoClienteArray['tmp_name'][$clave]) ? $logoClienteArray['tmp_name'][$clave] :false;
+  $logoClienteNombreArchivo = isset($logoCliente) ? urlencode($logoClienteArray['name'][$clave]) :false ;
+
+
+
+if($addClientes == "true" && $usuarioClienteNuevo && $nombreClienteNuevo && $logoCliente ){
+  if(!$contraseniaNuevo) $contraseniaNuevo = $usuarioClienteNuevo.'5546';
+
+  $insert = "INSERT INTO usuarios (usuario, contrasenia, nombre, logo ";
+  $insert .= ")VALUES('$usuarioClienteNuevo', '$contraseniaNuevo', '$nombreClienteNuevo','$logoClienteNombreArchivo'";
+  $insert .= " );";
+  
+  $query = mysqli_query($cnx, $insert);
+
+  if($query) $_SESSION['error.addUser'] = 'Usuarios cargados con exito';
+  else $_SESSION['error.addUser'] = 'Error al insertar usuarios';
+
+  $dir = '../'.$directorioReportes.'/'.$usuarioClienteNuevo;
+  mkdir($dir, 0775);
+  copy($logoCliente, '../'.$directorioLogos.'/'.$logoClienteNombreArchivo);
+}
+elseif($addClientes == "true") $_SESSION['error.addUser'] = 'Faltan Datos';
+else $_SESSION['error.addUser'] = false;
+
+endforeach;
+endif;
+
 ?>
 
 <div class="container admin">
@@ -129,7 +176,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     } 
   ?>
 
-      <form class="form-horizontal" enctype="multipart/form-data" role="form" method="post" action="index.php">
+      <form class="form-horizontal" enctype="multipart/form-data" role="form" method="post" action="#">
       <input type="hidden" name="addDatos" value="true" />
       <div class="row">
   <div class="col-md-5 col-md-offset-1">
@@ -192,21 +239,6 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     </label>
   </div><!-- ./ row--> 
 
-<?php /*
-
-  <div class="form-group">
-    <p class="col-sm-12 text-center">Opcional 2</p>
-    <label for="tituloArchivo" class="col-sm-2 control-label">Titulo Archivo</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="tituloArchivo" placeholder="Titulo" name="tituloArchivo"  value="<?php echo $tituloArchivo ?>">
-    </div>
-
-    <div class="col-sm-4">
-      <input type="file"  id="archivo" name="archivo">
-      <p class="help-block">No metan virus, esto lo va a descargar el cliente en forma directa</p>
-    </div>
-  </div>
-*/?>
   <div class="form-group">
     <label for="comentario" class="col-sm-2 control-label">Comentario <br /> Opcional</label>
     <div class="col-sm-9">
@@ -220,6 +252,55 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     </div>
   </div>
 </form>
+
+
+<h2>Alta clientes</h2>
+  <p class="help-block"> Todos los campos son obligatorios</p>
+  <?php 
+    if($_SESSION['error.addUser']) {
+    echo '<div class="text-warning"><p class="bg-warning text-center">'.$_SESSION['error.addUser'].'</p></div>'; 
+    $_SESSION['error.addUser'] = false ;
+    } 
+  ?>
+    <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" action="#">
+      <input type="hidden" name="addClientes" value="true" />
+
+ <div class="form-group">
+    <label for="nombreClienteNuevo" class="col-sm-2 control-label">Nombre Cliente</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="nombreClienteNuevo" placeholder="Cliente" name="nombreClienteNuevo[]" >
+    </div>
+
+     <label for="usuarioClienteNuevo" class="col-sm-2 control-label">URL Dominio Cliente</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="usuarioClienteNuevo" placeholder="Ej: puntorojomarketing.com" name="usuarioClienteNuevo[]" >
+    </div>
+  </div>
+
+
+ <div class="form-group">
+     <div class="col-sm-6">
+      <label for="contraseniaNuevo" class="col-sm-4 control-label">Contraseña Cliente</label>
+     <div class="col-sm-8">
+      <input type="text" class="form-control" id="contraseniaNuevo" name="contraseniaNuevo[]" >
+    </div>
+    <p class="help-block col-sm-8 col-sm-offset-4">Default url+5546 ej: puntorojomarketing.com5546</p>
+    </div>
+     
+     <div class="col-sm-6 ">
+      <label for="tituloArchivo" class="col-sm-3 control-label">Logo Cliente</label>
+      <input type="file"  id="logoCliente" name="logoCliente[]" class="col-sm-9" />
+      <p class="help-block col-sm-12 text-center">Logo preferiblemente con transparencias en PNG</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-offset-5">
+      <button type="submit" class="btn btn-default">Cargar Cliente</button>
+    </div>
+  </div>
+  </form>
+
 </div>
 
 <script type="text/javascript">
