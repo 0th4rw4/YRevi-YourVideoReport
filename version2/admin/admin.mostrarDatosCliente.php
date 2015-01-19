@@ -121,7 +121,7 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 			 	 <button type="submit" class="btn btn-info" style="margin-top: 1em; ">Ver</button>
 			 </div>
 			 <div class="col-md-1">
-			 	 <a href="/admin/admin.addUser.php" class="btn btn-warning" style="margin-top: 1em; color: #333333;" >Nuevo Cliente</a>
+			 	 <a href="/admin/admin.dataEntry.php" class="btn btn-warning" style="margin-top: 1em; color: #333333;" >Nuevo Reporte</a>
 			 </div>
 		</div>
 	</form>

@@ -127,9 +127,9 @@ for($i=0; $i<$limit; $i++) :
       padding: 40px;
     }
     div.listUser {
-      overflow: scroll; 
+      height: auto;
       min-height: 200px;
-      overflow-x: auto;
+      overflow: none;
       margin-bottom: 40px;
     }
     div.listUser tbody tr td img {
@@ -160,6 +160,7 @@ for($i=0; $i<$limit; $i++) :
       color: #222222;
       font-size: 1.9em;
       border-bottom: 3px solid transparent;
+      margin-right: 10px; 
 
       transition-delay: 0s;
       transition-duration: 0.2s;
@@ -234,6 +235,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
           <th>Cliente</th>
           <th>Dominio</th>
           <th>Status</th>
+          <th>Cambiar Clave</th>
         </tr>
       </thead>
         <tbody>
@@ -247,7 +249,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
             <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
             <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
             <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\">**********</a></td>
+            <td data-role=\"changePassword\"><a href=\"#\"> $clientesRTA[contrasenia] </a></td>
           </tr>";
           endif;
           }

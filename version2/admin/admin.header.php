@@ -36,7 +36,7 @@ include_once('../config/conexion.php');
 <header class="container clearfix admin">
 
 	 <p class="col-sm-3">
-    	<a href="/"><img src="<?php echo '../'.$dirImgs.'/posicionamiento-web-2.png'; ?>"  class="logoPuntoRojo" alt="Punto Rojo" /></a>
+    	<a href="<?php echo $url; ?>"><img src="<?php echo '../'.$dirImgs.'/posicionamiento-web-2.png'; ?>"  class="logoPuntoRojo" alt="Punto Rojo" /></a>
   	</p>
   	<nav class="clearfix col-sm-9 text-right">
 		<ul class="list-inline">
