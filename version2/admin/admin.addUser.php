@@ -76,12 +76,6 @@ endif;
     <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" action="admin.addUser.php">
     	<input type="hidden" name="addClientes" value="true" />
 
-<?php
-
-$limit= 1;
-for($i=0; $i<$limit; $i++) : 
-?>
-
  <div class="form-group">
     <label for="nombreClienteNuevo" class="col-sm-2 control-label">Nombre Cliente</label>
     <div class="col-sm-4">
@@ -113,7 +107,7 @@ for($i=0; $i<$limit; $i++) :
 
 
  
-<?php endfor; ?>
+
 
   <div class="form-group">
     <div class="col-sm-2 col-sm-offset-5">

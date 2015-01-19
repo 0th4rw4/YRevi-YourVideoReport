@@ -52,7 +52,7 @@ if($userChange){
 	if($changeName) { $qUpdate .= " nombre = '$changeName' "; $log['valor'] = $changeName; }
 	if($changeUrl) { $qUpdate .= " usuario = '$changeUrl' "; $log['valor'] = $changeUrl; }
 	if($changeStatus) { $qUpdate .= " state = $changeStatus "; $log['valor'] = $changeStatus;  }
-	if($changePassword) { $qUpdate .= " contrasenia = MD5('$changePassword') "; $log['valor'] = '**********'; }
+	if($changePassword) { $qUpdate .= " contrasenia = '$changePassword' "; $log['valor'] = $changePassword; }
 	$qUpdate .= " WHERE id='$userChange' ;"; 
 	$queryUpdate = mysqli_query($cnx, $qUpdate);
 
