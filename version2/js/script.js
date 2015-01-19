@@ -79,7 +79,10 @@ for( i=0; i < userChange.length; i++){
 			case 'changeName': field = $.parseHTML('<input type="text" data-role="'+ dataRole +'" name="'+dataRole+'" placeholder="Ingrese el nuevo Nombre" />'); break;
 			case 'changeUrl': field = $.parseHTML('<input type="text" data-role="'+ dataRole +'" name="'+dataRole+'" placeholder="Ingrese el nuevo dominio" />'); break;
 			case 'changeStatus': field = false; break; 
-			case 'changePassword': field = $.parseHTML('<input type="password" data-role="'+ dataRole +'" name="'+dataRole+'" placeholder="Nueva Clave" />'); break;
+			case 'changePassword': 
+				pass = fieldTd.find('a').attr('title');
+				field = $.parseHTML('<input type="text" data-role="'+ dataRole +'" name="'+dataRole+'" placeholder="'+pass+'" value="'+pass+'" />'); 
+				break;
 		}
 		if(field){
 			fieldA.addClass('invisible');

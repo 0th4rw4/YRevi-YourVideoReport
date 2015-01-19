@@ -184,7 +184,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
         echo "<tr data-role=\"$clientesRTA[id]\">
             <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
             <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\"> $clientesRTA[contrasenia] </a></td>
+            <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
           </tr>";
           endif;
           }
@@ -215,7 +215,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
             <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
             <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
             <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\"> $clientesRTA[contrasenia] </a></td>
+            <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
           </tr>";
           endif;
           }
