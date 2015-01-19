@@ -364,7 +364,7 @@ var SpaceInvaders;
     },
 
     mousemove: function(e) {
-      SpaceInvaders.mouseX = Math.min(e.clientX, canvas.width - ship.width);
+      //SpaceInvaders.mouseX = Math.min(e.clientX, canvas.width - ship.width);
     },
     
     start: function() {

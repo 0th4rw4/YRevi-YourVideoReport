@@ -5,6 +5,15 @@
   <title></title> 
   <style>
   * { margin: auto; padding: 0; }
+  body{
+    background-color: #333333;
+    text-align: center;
+    color: #f0f0f0;
+    font-family: sans-serif;
+  }
+  #wrap {
+    display: inline-block;
+  }
   
   canvas {  border: 1px solid silver; }
   </style> 
@@ -14,17 +23,16 @@
  
  <body>
   <div id="wrap">
-
     <h1>Space Invaders</h1> 
-    <p> Left, Right to move</p>
-    <p>Space to fire</p>
-    <p>Or, use your mouse</p>
-    <p>Esc pauses</p>
 
     <canvas id="view" width="400" height="600"></canvas>
     <audio id="shoot" preload="true" src="./sfx/shoot.wav"></audio>
     <audio id="kill"  preload="true" src="./sfx/invaderkilled.wav"></audio>
     
+    <p>Para mover usar las teclas Izquierda, Derecha <br/>
+    Barra Espaciadora para disparar
+    Tecla ESC para pausar
+    </p>
   </div>
  </body> 
 </html> 

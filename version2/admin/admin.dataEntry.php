@@ -301,6 +301,9 @@ endif;
   </div>
   </form>
 
+<a href="../egg/" style=" position: absolute; bottom: -70px; left: 0; z-index: -1; ">
+  <img src="../img/easteregg.png" alt="easter egg" height="15" />
+</a>
 </div>
 
 <script type="text/javascript">
