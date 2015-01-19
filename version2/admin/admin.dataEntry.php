@@ -301,8 +301,8 @@ endif;
   </div>
   </form>
 
-<a href="../egg/" style=" position: absolute; bottom: -70px; left: 0; z-index: -1; ">
-  <img src="../img/easteregg.png" alt="easter egg" height="15" />
+<a href="../egg/" style=" position: absolute; bottom: -70px; left: 0; z-index: 0; border: 0; margin: 0; padding: 0;" title="">
+  <img src="../img/easteregg.png" alt="easter egg" height="13" />
 </a>
 </div>
 
