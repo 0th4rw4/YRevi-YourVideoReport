@@ -571,8 +571,8 @@ var SpaceInvaders;
             }
           }
         });
-        document.getElementById('shoot').volume = 0.2;
-        document.getElementById('shoot').play();
+        //document.getElementById('shoot').volume = 0.2;
+        //document.getElementById('shoot').play();
       },
 
       explode: function() {
@@ -618,8 +618,8 @@ var SpaceInvaders;
         if (invaders.remaining === 0) {
           invaders.nextWave();
         };
-        document.getElementById('kill').volume = 0.2;
-        document.getElementById('kill').play();
+        //document.getElementById('kill').volume = 0.2;
+        //document.getElementById('kill').play();
       }
     }, options);
   };
