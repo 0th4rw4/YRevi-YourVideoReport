@@ -17,7 +17,7 @@
 # <http://www.gnu.org/licenses/>.
 */
 include_once('admin.header.php');
-if(! ( $_SESSION['nivel']=='1' || $_SESSION['nivel']=='0' )  )
+if(! ( $_SESSION['nivel']=='4DM1N' )  )
   header("Location: index.php");
 
 //Ingreso de clientes
@@ -207,7 +207,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
             <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
             <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
             <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
+            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
             <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\">*********</a></td>
           </tr>";
           endif;
@@ -238,7 +238,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
             <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
             <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
             <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a></td>
+            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a></td>
             <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\">*********</a></td>
           </tr>";
           endif;

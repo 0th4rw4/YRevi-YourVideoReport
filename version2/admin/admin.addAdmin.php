@@ -17,7 +17,7 @@
 # <http://www.gnu.org/licenses/>.
 */
 include_once('admin.header.php');
-if(! ( $_SESSION['nivel']=='1' || $_SESSION['nivel']=='0' )  )
+if(! ( $_SESSION['nivel']=='4DM1N' )  )
   header("Location: index.php");
 
 //Ingreso de clientes
@@ -105,13 +105,6 @@ for($i=0; $i<$limit; $i++) :
     div.listUser tbody tr td img {
       max-height: 60px;
     }
-    div.listUser tbody tr td.changeStatus a {
-      display: inline-block; 
-      padding: 0.5em 1em; 
-      border-radius: 3px; 
-      color: white;
-    }
-    /*div.listUser tbody tr td.changeStatus a:hover { background-color: grey;}*/
 
     div.listUser tbody tr td a.activo {  background-color: green; }
     div.listUser tbody tr td a.inactivo {  background-color: red; }
@@ -182,8 +175,8 @@ $queryClientes = mysqli_query($cnx, $qClientes);
           if($clientesRTA['state'] == 1):
         $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
         echo "<tr data-role=\"$clientesRTA[id]\">
-            <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
+            <td width=\"60%\" data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
+            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
             <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
           </tr>";
           endif;
@@ -197,9 +190,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
       <table class="table table-striped table-hover "> 
       <thead>
         <tr>
-          <th>Logo</th>
-          <th>Cliente</th>
-          <th>Dominio</th>
+          <th>Usuario</th>
           <th>Status</th>
           <th>Cambiar Clave</th>
         </tr>
@@ -211,10 +202,11 @@ $queryClientes = mysqli_query($cnx, $qClientes);
           if($clientesRTA['state'] == 2):
         $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
         echo "<tr data-role=\"$clientesRTA[id]\">
-            <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
-            <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
-            <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a></td>
+            <td width=\"60%\" data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
+            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\">
+              <a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a>
+              <a href=\"#\" class=\"close\" data-role=\"delete\" >&times;</a>
+            </td>
             <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
           </tr>";
           endif;

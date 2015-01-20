@@ -17,7 +17,7 @@
 # <http://www.gnu.org/licenses/>.
 */
 include_once('admin.header.php');
-if(! ( $_SESSION['nivel']=='1' || $_SESSION['nivel']=='0' )  )
+if(! ( $_SESSION['nivel']=='4DM1N' )  )
   header("Location: index.php");
 
 //Obtener listado de clientes
@@ -134,18 +134,11 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 				$src = $entradasRTA['url'];
 				$urlArchivos = $url.$directorioReportes.'/'.$entradasRTA['usuario'].'/'.$entradasRTA['fecha'].'/';
 
-				/*
-				$selectComent = "SELECT 
-				id, comentario, status, fecha_comentario, nombre, id_entrada, id_cliente
-				 FROM feedback WHERE id_entrada = '$entradasRTA[id]' AND status = 1 ORDER BY fecha_comentario;";
-				$comentQuery = mysqli_query($cnx, $selectComent);
-				*/
-
 				echo '<li class="clearfix" id="'.$entradasRTA['id'].'">';
 				?>
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<p> ¿Desea enviar este reporte a la papelera? <a href="">Si</a> <a href="">No</a></p>
+						<p> ¿Desea eliminar este reporte? <a href="">Si</a> <a href="">No</a></p>
 					</div>
 				</div>
 				<?php
@@ -157,36 +150,6 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 				echo '</div><hr />';
 				$modulo[$tipo]->mostrar($src);
 				echo '<p class="col-sm-10 col-sm-offset-1">'.$entradasRTA['comentario'].'</p>';
-				/* SISTEMA COMENTARIO
-				echo '<ul class="comentarios col-sm-10 col-sm-offset-2 list-unstyled">';
-				while($comentRTA = mysqli_fetch_assoc($comentQuery)){
-				echo '<li class="clearfix">';
-				echo '<p class="col-sm-6 text-right" >'.$comentRTA['nombre'].'</p>';
-				echo '<p class="col-sm-6 text-right">'.$comentRTA['fecha_comentario'].'</p>';
-				echo '<p class="col-sm-12">'.$comentRTA['comentario'].'</p></li>';
-			}
-				echo '<li>';
-			?>
-
-			<form class="form-horizontal clearfix" role="form" name="formComentarios" method="post" action="../include/addComentarios.php">
-			<input type="hidden" name="idUsuario" value="<?php echo $entradasRTA['idCliente']; ?>" />
-			<input type="hidden" name="idEntrada" value="<?php echo $entradasRTA['id']; ?>" />
-				<div class="col-sm-3 text-center">
-					<label for="comentarioNombre">Su Nombre</label>
-					<input type="text" name="comentarioNombre" id="comentarioNombre" value="" placeholder="Ingrese su nombre" />
-			 	 	<button type="submit" class="btn btn-info">Enviar</button>
-			 	</div>
-				<div class="form-group col-sm-9">
-				 	<label for="comentario" class="control-label col-sm-7">Deje un Comentario sobre el reporte</label>
-				 	<textarea class="form-control col-sm-12" name="comentario" id="comentario"></textarea>
-				</div>
-			</form>
-
-			 <?php
-				echo'</li>';
-
-				echo'</ul>';
-				*/
 				echo '</li>';
 			}
 		//}

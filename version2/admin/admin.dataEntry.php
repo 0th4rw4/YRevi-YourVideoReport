@@ -19,7 +19,7 @@
 /*
   Quiero un list para los diferentes tipos de datos a mostrar
 */
-if(! ( $_SESSION['nivel']=='1' || $_SESSION['nivel']=='0' )  )
+if(! ( $_SESSION['nivel']=='4DM1N' )  )
   header("Location: index.php");
 
 //Validacion de datos

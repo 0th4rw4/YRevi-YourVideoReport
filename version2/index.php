@@ -31,14 +31,12 @@ include_once('config/conexion.php');
 */
 if(isset($_SESSION['nivel'])){
 switch( $_SESSION['nivel']){
-
-  case 0: header("Location: admin/index.php");break;
-  case 1: header("Location: admin/index.php");break;
-  case 2: header("Location: cliente/index.php");break;
+  case '4DM1N': header("Location: admin/index.php");break;
+  case 'U53R': header("Location: cliente/index.php");break;
 }}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

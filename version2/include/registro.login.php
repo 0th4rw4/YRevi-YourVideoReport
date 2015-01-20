@@ -26,16 +26,23 @@ $_SESSION['error.log']='No esta registrado';
 if( /*!isset($_SESSION['login'])&& */ $user!=false && $pass!=false){
 	//$pass=md5($pass);
 	$q = "SELECT usuario, contrasenia, id_nivel, state 
-		FROM usuarios WHERE usuario = '$user' AND ( contrasenia = MD5('$pass') OR contrasenia = '$pass' );";	
+		FROM usuarios WHERE usuario = '$user' AND (state = 1 OR state = 0) AND ( contrasenia = MD5('$pass') OR contrasenia = '$pass' );";	
 	$filas=mysqli_query($cnx,$q);
 	$qRta = mysqli_fetch_assoc($filas);
 	if($qRta!=false && $qRta['state'] == '1'){
 			$_SESSION['login']=$qRta['usuario'];
-			$_SESSION['nivel']=$qRta['id_nivel'];
+
+			if($qRta['id_nivel'] == '1' || $qRta['id_nivel'] == '0')
+				$_SESSION['nivel'] = '4DM1N';
+			if($qRta['id_nivel'] == '2')
+				$_SESSION['nivel'] = 'U53R';
+
 			$_SESSION['error.log']=true;
 	}
-	elseif( $qRta['state'] != '1' ){ $_SESSION['error.log']='Usuario invalido'; }
-	else{$_SESSION['error.log']='Datos Invalidos';}
+	elseif( $qRta['state'] != '1' ){ 
+		$_SESSION['error.log']='Usuario invalido'; }
+	else{
+		$_SESSION['error.log']='Datos Invalidos';}
 }elseif(isset($_SESSION['login'])){
 	$_SESSION['error.log']=true;
 }

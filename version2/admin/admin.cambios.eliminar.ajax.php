@@ -18,7 +18,7 @@
 */
 $loop=true;
 include_once('../config/conexion.php');
-if($_SESSION['nivel']=='1'){ //Es administrador ?
+if($_SESSION['nivel']=='4DM1N'){ //Es administrador ?
 
 $eliminar = isset( $_POST['delete'] ) ? mysqli_real_escape_string($cnx,$_POST['delete']) : false;
 if($eliminar){
@@ -42,29 +42,31 @@ $changeUrl = isset( $_POST['changeUrl'] ) ? mysqli_real_escape_string($cnx,$_POS
 $changeStatus = isset( $_POST['changeStatus'] ) ? mysqli_real_escape_string($cnx,$_POST['changeStatus']) : false;
 $changePassword = isset( $_POST['changePassword'] ) ? mysqli_real_escape_string($cnx,$_POST['changePassword']) : false;
 
+
 if($userChange){
 	$log = array();
 	$log['id'] = $userChange;
 	$log['valor'] = false;
 	$changeStatus = intval($changeStatus);
 
-	$qUpdate = "UPDATE usuarios SET ";
-	if($changeName) { $qUpdate .= " nombre = '$changeName' "; $log['valor'] = $changeName; }
-	if($changeUrl) { $qUpdate .= " usuario = '$changeUrl' "; $log['valor'] = $changeUrl; }
-	if($changeStatus) { $qUpdate .= " state = $changeStatus "; $log['valor'] = $changeStatus;  }
-	if($changePassword) { $qUpdate .= " contrasenia = '$changePassword' "; $log['valor'] = $changePassword; }
-	$qUpdate .= " WHERE id='$userChange' ;"; 
-	$queryUpdate = mysqli_query($cnx, $qUpdate);
+	if($changeStatus != 'delete'){
+		$qUpdate = "UPDATE usuarios SET ";
+		if($changeName) { $qUpdate .= " nombre = '$changeName' "; $log['valor'] = $changeName; }
+		if($changeUrl) { $qUpdate .= " usuario = '$changeUrl' "; $log['valor'] = $changeUrl; }
+		if($changeStatus && $changeStatus != 'delete') { $qUpdate .= " state = $changeStatus "; $log['valor'] = $changeStatus;  }
+		if($changePassword) { $qUpdate .= " contrasenia = '$changePassword' "; $log['valor'] = $changePassword; }
+		$qUpdate .= " WHERE id='$userChange' ;"; 
+		$queryUpdate = mysqli_query($cnx, $qUpdate);
 
-	if( $queryUpdate ){ 
-		$log['mess'] = "Actualizacion exitosa";
-		echo json_encode($log);
-	}else{
-		$log['mess'] = "Error sql";
-		echo json_encode($log);
+		if( $queryUpdate ){ 
+			$log['mess'] = "Actualizacion exitosa";
+			echo json_encode($log);
+		}else{
+			$log['mess'] = "Error sql";
+			echo json_encode($log);
+		}
 	}
 }
-
 
 }
 ?>

@@ -148,18 +148,18 @@ td p.status { border-radius: 2px; padding:2px; color: inherit;}
 
  #userActivos {}
     #userInactivos {}
-    div.listUser {
+    .listUser {
       overflow: scroll; 
       height: 350px;
       overflow-x: auto;
       margin-bottom: 40px;
     }
-    div.listUser tbody tr td img {max-height: 60px;}
-    div.listUser tbody tr td.changeStatus a {display: inline-block; padding: 0.5em 1em; border-radius: 3px;  color: white;}
+    .listUser tbody td img {max-height: 60px;}
+    .listUser tbody .changeStatus a {display: inline-block; padding: 0.5em 1em; border-radius: 3px;  color: white;}
     /*div.listUser tbody tr td.changeStatus a:hover { background-color: grey;}*/
 
-    div.listUser tbody tr td a.activo {  background-color: green; }
-    div.listUser tbody tr td a.inactivo {  background-color: red; }
+    .listUser tbody td a.activo {  background-color: green; }
+    .listUser tbody td a.inactivo {  background-color: red; }
     div.admin span#refereshActivos {}
 
 
@@ -185,7 +185,11 @@ td p.status { border-radius: 2px; padding:2px; color: inherit;}
   z-index: 2;
 }
 
-h2 > a.close {
+h2 > a.close,
+table .changeStatus a.close {
+  padding: 0;
+  display: inline;
+
   color: red;
   text-transform: uppercase;
   opacity: 0.8;
@@ -194,11 +198,17 @@ h2 > a.close {
   background-color: rgba(30,15,15,0.3);
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 6px;
   text-align: center;
 
 }
-h2 > a.close:hover {
+table .changeStatus a.close {
+   font-size: 2em;
+   padding: 0.8;
+}
+
+h2 > a.close:hover,
+table .changeStatus a.close:hover {
    opacity: 1;
    color: brown;
 }

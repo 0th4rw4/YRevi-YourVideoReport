@@ -18,7 +18,7 @@
 */
 include_once('admin.header.php');
 
-if(! ( $_SESSION['nivel']=='1' || $_SESSION['nivel']=='0'  ) )
+if(! ( $_SESSION['nivel']=='4DM1N' ) )
   header("Location: ../index.php");
 else {
 	include('admin.dataEntry.php');

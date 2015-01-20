@@ -15,7 +15,14 @@
 # Public License along with this program.  If not, see
 # <http://www.gnu.org/licenses/>.
 */
+
+// Eliminar reportes
+/*
+ Al clickear sobre la X (boton de cerrar) muestra un dialogo para verificar la accion.
+ Si responde "Si" entonces envia la solicitud al servidor via Ajax, caso contrario cierra la ventana que se desplego
+*/
 var reportDeleteButton = $("div.admin #mostrarDatos h2 a.close");
+if( isNaN(reportDeleteButton) ){
 for( i=0; i < reportDeleteButton.length ; i++){
 	var boton = reportDeleteButton[i];
 	//$(boton).preventDefault();
@@ -58,9 +65,19 @@ for( i=0; i < reportDeleteButton.length ; i++){
 		} 
 		
 	};
+}// -> end for
 }
 
+// Actualizar datos de usuario (y administrador)
+/*
+ Al clickear sobre un item de la tabla donde estan listados los usuarios, 
+ se reemplaza el contenido por un campo de formularios para actulizar el dato.
+ Si hace un click dentro y luego otro fuera, sin hacer cambios, se cierra el formulario 
+ y aparece el campo de la tabla como estaba. Caso contrario, si se realiza un cambio, es enviado al servidor via Ajax
+ quien responde con el cambio efectuado para actualizar la vista.
+*/
 var userChange = $("div.admin div.listUser > table tbody tr > td");
+if( isNaN(userChange) ){
 for( i=0; i < userChange.length; i++){
 	var fieldTd = $(userChange[i]);
 	fieldA = fieldTd.find("a");
@@ -181,3 +198,4 @@ for( i=0; i < userChange.length; i++){
 		}
 	});
 }//-->end for
+}
