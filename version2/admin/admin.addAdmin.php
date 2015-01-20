@@ -173,12 +173,15 @@ $queryClientes = mysqli_query($cnx, $qClientes);
         <?php 
         while( $clientesRTA = mysqli_fetch_assoc($queryClientes) ){
           if($clientesRTA['state'] == 1):
-        $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
-        echo "<tr data-role=\"$clientesRTA[id]\">
-            <td width=\"60%\" data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
-          </tr>";
+            $state_ = 2;
+            $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
+            echo "<tr data-role=\"$clientesRTA[id]\">
+                <td width=\"60%\" data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
+                <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\">
+                  <a href=\"#\" class=\"activo\" data-role=\"$state_\">Activo</a>
+                </td>
+                <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
+              </tr>";
           endif;
           }
         ?>
@@ -187,6 +190,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     </div>
 
     <div id="userInactivos" class="listUser table-responsive">
+      <p style=" background: red; border-radius: 6px; border: 1px solid black; display: inline-block; color: white; padding: 5px; "> Cuidado, la X elimina </p>
       <table class="table table-striped table-hover "> 
       <thead>
         <tr>
@@ -200,15 +204,16 @@ $queryClientes = mysqli_query($cnx, $qClientes);
          $queryClientes = mysqli_query($cnx, $qClientes);
         while( $clientesRTA = mysqli_fetch_assoc($queryClientes) ){
           if($clientesRTA['state'] == 2):
-        $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
-        echo "<tr data-role=\"$clientesRTA[id]\">
-            <td width=\"60%\" data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\">
-              <a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a>
-              <a href=\"#\" class=\"close\" data-role=\"delete\" >&times;</a>
-            </td>
-            <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
-          </tr>";
+            $state_ = 1;
+            $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
+            echo "<tr data-role=\"$clientesRTA[id]\">
+                <td width=\"60%\" data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
+                <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\">
+                  <a href=\"#\" class=\"inactivo\" data-role=\"$state_\">Inactivo</a>
+                  <a href=\"#\" class=\"close\" data-role=\"delete\" >&times;</a>
+                </td>
+                <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\"> ******** </a></td>
+              </tr>";
           endif;
           }
         ?>

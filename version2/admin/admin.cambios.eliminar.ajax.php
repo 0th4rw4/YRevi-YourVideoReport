@@ -18,8 +18,12 @@
 */
 $loop=true;
 include_once('../config/conexion.php');
-if($_SESSION['nivel']=='4DM1N'){ //Es administrador ?
+if( $_SESSION['nivel'] == '4DM1N'){ 
 
+// Eliminar reportes
+/*
+	La variable $eliminar recive el ID del reporte  correspondiente segun la base de datos
+*/
 $eliminar = isset( $_POST['delete'] ) ? mysqli_real_escape_string($cnx,$_POST['delete']) : false;
 if($eliminar){
 	$log = array();
@@ -36,6 +40,11 @@ if($eliminar){
 		echo json_encode($log);
 	}
 }
+
+// Actualizar datos de Usuario y Administrador 
+/*
+	La variable $userChange recive el ID del usuario a modificar
+*/
 $userChange = isset( $_POST['userChange'] ) ? mysqli_real_escape_string($cnx,$_POST['userChange']) : false;
 $changeName = isset( $_POST['changeName'] ) ? mysqli_real_escape_string($cnx,$_POST['changeName']) : false;
 $changeUrl = isset( $_POST['changeUrl'] ) ? mysqli_real_escape_string($cnx,$_POST['changeUrl']) : false;
@@ -47,24 +56,32 @@ if($userChange){
 	$log = array();
 	$log['id'] = $userChange;
 	$log['valor'] = false;
-	$changeStatus = intval($changeStatus);
-
+	
 	if($changeStatus != 'delete'){
+		$changeStatus = intval($changeStatus);
+
 		$qUpdate = "UPDATE usuarios SET ";
 		if($changeName) { $qUpdate .= " nombre = '$changeName' "; $log['valor'] = $changeName; }
 		if($changeUrl) { $qUpdate .= " usuario = '$changeUrl' "; $log['valor'] = $changeUrl; }
-		if($changeStatus && $changeStatus != 'delete') { $qUpdate .= " state = $changeStatus "; $log['valor'] = $changeStatus;  }
+		if($changeStatus) { $qUpdate .= " state = $changeStatus "; $log['valor'] = $changeStatus;  }
 		if($changePassword) { $qUpdate .= " contrasenia = '$changePassword' "; $log['valor'] = $changePassword; }
 		$qUpdate .= " WHERE id='$userChange' ;"; 
 		$queryUpdate = mysqli_query($cnx, $qUpdate);
+	}
 
-		if( $queryUpdate ){ 
-			$log['mess'] = "Actualizacion exitosa";
-			echo json_encode($log);
-		}else{
-			$log['mess'] = "Error sql";
-			echo json_encode($log);
-		}
+	if( $changeStatus && $changeStatus == 'delete' ){
+
+		$qUpdate = "UPDATE usuarios SET state = 3 WHERE id='$userChange' ;"; 
+		$queryUpdate = mysqli_query($cnx, $qUpdate);
+		$log['valor'] = 'deleted';
+	}
+
+	if( $queryUpdate ){ 
+		$log['mess'] = "Actualizacion exitosa";
+		echo json_encode($log);
+	}else{
+		$log['mess'] = "Error sql";
+		echo json_encode($log);
 	}
 }
 

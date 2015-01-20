@@ -172,7 +172,7 @@ for( i=0; i < userChange.length; i++){
 		} //--> end if(field)
 		else if(dataRole == 'changeStatus'){
 				statusButton = fieldA;
-					statusValue = statusButton.attr('data-role');
+				statusValue = statusButton.attr('data-role');
 
 					$.ajax({
 						type:'POST',
@@ -182,17 +182,20 @@ for( i=0; i < userChange.length; i++){
 						success: function(respuesta){
 							respuesta = JSON.parse(respuesta);
 							
-							if(statusValue == 1){
+							if(respuesta.valor == 1){
 								statusButton.text('Activo');
 								statusButton.attr('data-role', '2');
 								statusButton.removeClass('inactivo');
 								statusButton.addClass('activo');
 							}
-							if(statusValue == 2){
+							if(respuesta.valor == 2){
 								statusButton.text('Inactivo');
 								statusButton.attr('data-role', '1');
 								statusButton.removeClass('activo');
 								statusButton.addClass('inactivo');
+							}
+							if(respuesta.valor == 'deleted'){
+								statusButton.parent().parent().remove();
 							}
 					}	});
 		}

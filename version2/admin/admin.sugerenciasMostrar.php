@@ -66,10 +66,7 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 			 	 <button type="submit" class="btn btn-info">Consultar</button>
 			 </div>
 		</div>
-		<div class="col-sm-12 text-center">
-			<p>Pag: </p>
-			<p> <a href="admin.sugerenciasMostrar.php?pag=mas" >Anterior</a> <strong>1</strong> <a href="admin.sugerenciasMostrar.php?pag=menos" >Siguiente</a> </p>
-		</div>
+		
 	</form>
 	<div class="col-sm-10 col-sm-offset-1" id="mostrarDatos">
 		<ul class="list-unstyled col-sm-8 col-sm-push-2 adminSugerencias">

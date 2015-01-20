@@ -125,14 +125,7 @@ endif;
     div.listUser tbody tr td img {
       max-height: 60px;
     }
-    div.listUser tbody tr td.changeStatus a {
-      display: inline-block; 
-      padding: 0.5em 1em; 
-      border-radius: 3px; 
-      color: white;
-    }
-    /*div.listUser tbody tr td.changeStatus a:hover { background-color: grey;}*/
-
+   
     div.listUser tbody tr td a.activo {  background-color: green; }
     div.listUser tbody tr td a.inactivo {  background-color: red; }
     div.admin span#refereshActivos {}
@@ -202,14 +195,17 @@ $queryClientes = mysqli_query($cnx, $qClientes);
         <?php 
         while( $clientesRTA = mysqli_fetch_assoc($queryClientes) ){
           if($clientesRTA['state'] == 1):
-        $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
-        echo "<tr data-role=\"$clientesRTA[id]\">
-            <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
-            <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
-            <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"activo\" data-role=\"$clientesRTA[state]\">Activo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\">*********</a></td>
-          </tr>";
+            $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
+            $state_ = 2;
+            echo "<tr data-role=\"$clientesRTA[id]\">
+                <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
+                <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
+                <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
+                <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\">
+                  <a href=\"#\" class=\"activo\" data-role=\"$state_\">Activo</a>
+                </td>
+                <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\">*********</a></td>
+              </tr>";
           endif;
           }
         ?>
@@ -218,6 +214,7 @@ $queryClientes = mysqli_query($cnx, $qClientes);
     </div>
 
     <div id="userInactivos" class="listUser table-responsive">
+      <p style=" background: red; border-radius: 6px; border: 1px solid black; display: inline-block; color: white; padding: 5px; "> Cuidado, la X elimina </p>
       <table class="table table-striped table-hover "> 
       <thead>
         <tr>
@@ -233,14 +230,18 @@ $queryClientes = mysqli_query($cnx, $qClientes);
          $queryClientes = mysqli_query($cnx, $qClientes);
         while( $clientesRTA = mysqli_fetch_assoc($queryClientes) ){
           if($clientesRTA['state'] == 2):
-        $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
-        echo "<tr data-role=\"$clientesRTA[id]\">
-            <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
-            <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
-            <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
-            <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\"><a href=\"#\" class=\"inactivo\" data-role=\"$clientesRTA[state]\">Inactivo</a></td>
-            <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\">*********</a></td>
-          </tr>";
+            $imagenUsuario = '../upload/logos/'.$clientesRTA['logo'];
+            $state_ = 1;
+            echo "<tr data-role=\"$clientesRTA[id]\">
+                <td data-role=\"changeLogo\" ><a href=\"#\" ><img src=\"$imagenUsuario\" alt=\"logo\"  /></a></td>
+                <td data-role=\"changeName\" ><a href=\"#\">$clientesRTA[nombre]</a></td>
+                <td data-role=\"changeUrl\" ><a href=\"#\">$clientesRTA[usuario]</a></td>
+                <td width=\"200\" data-role=\"changeStatus\" class=\"changeStatus\">
+                  <a href=\"#\" class=\"inactivo\" data-role=\"$state_\">Inactivo</a>
+                  <a href=\"#\" class=\"close\" data-role=\"delete\" >&times;</a>
+                </td>
+                <td data-role=\"changePassword\"><a href=\"#\" title=\"$clientesRTA[contrasenia]\">*********</a></td>
+              </tr>";
           endif;
           }
         ?>
