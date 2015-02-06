@@ -133,7 +133,9 @@ div.index > form.form-signin > button:hover,
 div.index > form.form-signin > button { background-color: #F3252B; border-color:  #F9F9F9; color: white; text-shadow: 1px 1px #D02025;}
 .admin div label { font-size: 12pt; }
 
-.adminSugerencias li {margin-bottom:30px;}
+.adminSugerencias li {margin-bottom: 10px; padding: 14px; }
+.adminSugerencias li > p { margin: 0; }
+.adminSugerencias li:nth-child(odd) { background-color: #f5f5f5; border-radius: 6px; }
 .sugerenciasTexto {font-size: 20pt; margin-top:35px; margin-bottom:25px;}
 div.cliente > form#sugerencias button { margin:0;}
 

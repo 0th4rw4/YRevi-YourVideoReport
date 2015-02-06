@@ -72,18 +72,16 @@ $queryEntradas = mysqli_query($cnx, $qEntradas);
 		<ul class="list-unstyled col-sm-8 col-sm-push-2 adminSugerencias">
 		<?php
 			while ($entradasRTA=mysqli_fetch_assoc($queryEntradas)){
-				echo '<li class="col-sm-12">';
-				echo '<p class="col-sm-6"><strong>Cliente:</strong> '.$entradasRTA['cliente'].' </p>';
-				echo '<p class="col-sm-6"><strong>Fecha:</strong> '.$entradasRTA['fecha'].'</p>';
-				echo '<p class="col-sm-6"><strong>Nombre: </strong>'.$entradasRTA['nombre'].'</p>';
-				//echo '<p class="col-sm-6"><strong>Cargo: </strong>'.$entradasRTA['cargo'].'</p>';
-				//echo '<p class="col-sm-12 text-center"><strong>Email: </strong>'.$entradasRTA['email'].'</p>';
-				echo '<p class="col-sm-12 text-center"><strong>Sugerencia:  </strong></p>';
-				echo '<p class="col-sm-9">'.$entradasRTA['sugerencia'].'</p>';
-				echo '<hr />';
-				echo '</li>';
+				echo "<li class=\"col-sm-12\">
+				<p class=\"col-sm-6\"><strong>Cliente:</strong> $entradasRTA[cliente] </p>
+				<p class=\"col-sm-6\"><strong>Fecha:</strong> $entradasRTA[fecha]</p>
+				<a href=\"#\" class=\"close\" data-role=\"$entradasRTA[id]\">X</a>
+				<p class=\"col-sm-6\"><strong>Nombre: </strong>$entradasRTA[nombre]</p>
+				<p class=\"col-sm-12 text-center\"><strong>Sugerencia:  </strong></p>
+				<p class=\"col-sm-9\">$entradasRTA[sugerencia]</p>
+				<hr />
+				</li>";
 			}
-		
 		?>
 		</ul>
 	</div>
