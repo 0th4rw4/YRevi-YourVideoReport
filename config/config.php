@@ -18,8 +18,18 @@
 */
 
 $directorioReportes = 'upload/reportes'; //upload/reportes/cliente@empresa.com/2014/01/imagen.jpg
-$directorioLogos = 'upload/logos';
+$directorioLogos = 'upload/logos'; 
 $dirImgs = 'img';
+
+
+//$root_url -> in conexion.php file
+$title_default = 'Campañas PuntoRojo';
+$own_name = 'Punto Rojo';
+$logo_empresa = $root_url.'/'.$dirImgs.'/logoPuntoRojo.png'; //Your Own Logo 
+$logo_empresa2 = $root_url.'/'.$dirImgs.'/posicionamiento-web-2.png'; //Your Own Logo 
+
+
+
 $confReport = array(
   "imgWidth" => '200px;',
   "imgHeight" => '200px;'

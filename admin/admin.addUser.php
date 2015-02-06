@@ -95,7 +95,7 @@ endif;
      <div class="col-sm-8">
       <input type="text" class="form-control" id="contraseniaNuevo" name="contraseniaNuevo[]" >
     </div>
-    <p class="help-block col-sm-8 col-sm-offset-4">Default url+5546 ej: puntorojomarketing.com5546</p>
+    <p class="help-block col-sm-8 col-sm-offset-4">Default url+5546 ej: sudominio.com5546</p>
     </div>
      
      <div class="col-sm-6 ">

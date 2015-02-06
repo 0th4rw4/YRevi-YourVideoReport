@@ -43,7 +43,7 @@ switch( $_SESSION['nivel']){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 
-    <title>Campañas PuntoRojo</title>
+    <title><?php echo $title_default; ?></title>
 
     <link href="<?php global $url; echo $url; ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php global $url; echo $url; ?>css/style.css" rel="stylesheet">
@@ -52,7 +52,7 @@ switch( $_SESSION['nivel']){
   <body>
     <div class="container index">
       <form class="form-signin " role="form" method="post" action="include/registro.login.php">
-        <h2 class="form-signin-heading text-center">Bienvenido al sistema de reportes de <img src="<?php echo 'img/posicionamiento-web-2.png'; ?>" alt="Punto Rojo" class="logoPuntoRojo" /></h2>
+        <h2 class="form-signin-heading text-center">Bienvenido al sistema de reportes de <img src="<?php echo $logo_empresa2; ?>" alt="<?php echo $own_name; ?>" /></h2>
         <input type="text" class="form-control" placeholder="Usuario" required autofocus name="email" id="email" />
         <input type="password" class="form-control" placeholder="Password" required id="password" name="password" />
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>

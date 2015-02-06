@@ -26,7 +26,7 @@ include_once('../config/conexion.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 
-    <title>SEO Reportes</title>
+    <title><?php echo $title_default; ?></title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">

@@ -16,15 +16,19 @@
 # Public License along with this program.  If not, see
 # <http://www.gnu.org/licenses/>.
 */
-ini_set('display_errors', 1 );
+ini_set('display_errors', 0 );
 //$cnx = mysqli_connect('localhost','cz000045_badmin','s4r4c4tung413X','cz000045_seguimiento');
 $cnx = mysqli_connect('localhost','root','PuntoRojo1970','puntoRojo');
 @ session_start();
+
+$root_url = 'http://reportes1.local';
+
+
 if(! isset($_SESSION['login']) && $loop!=true)
-  header("Location: http://reportes1.local/index.php?loop=true");
+  header("Location: $root_url/index.php?loop=true");
 
 if($loop!=true){
-  $url = 'http://reportes1.local/';
+  $url = $root_url;
   include('../modulos/index.php');
   include('config.php');
 }
