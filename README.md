@@ -4,4 +4,8 @@ Es una plataforma creada para una empresa de marketing SEO. Cubre la necesidad d
 Para darle una integracion al cliente directamente con la empresa, este ingresa con un usuario y contraseña particular.
 Una vez que ingreso puede ver los reportes entregados a lo largo de toda la campaña.
 
+Default Super User;
+user: patoruzu
+pass: patoruzu
+
 

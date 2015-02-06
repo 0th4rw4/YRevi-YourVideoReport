@@ -23,10 +23,10 @@ $dirImgs = 'img';
 
 
 //$root_url -> in conexion.php file
-$title_default = 'Campañas PuntoRojo';
-$own_name = 'Punto Rojo';
-$logo_empresa = $root_url.'/'.$dirImgs.'/logoPuntoRojo.png'; //Your Own Logo 
-$logo_empresa2 = $root_url.'/'.$dirImgs.'/posicionamiento-web-2.png'; //Your Own Logo 
+$title_default = 'Campañas YourVideoReport';
+$own_name = 'YourVideoReport';
+$logo_empresa = $root_url.'/'.$dirImgs.'/LogoEmpresa_0.png'; //Your Own Logo 
+$logo_empresa2 = $root_url.'/'.$dirImgs.'/LogoEmpresa_1.png'; //Your Own Logo 
 
 
 

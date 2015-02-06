@@ -17,11 +17,12 @@
 # <http://www.gnu.org/licenses/>.
 */
 ini_set('display_errors', 0 );
-//$cnx = mysqli_connect('localhost','cz000045_badmin','s4r4c4tung413X','cz000045_seguimiento');
-$cnx = mysqli_connect('localhost','root','PuntoRojo1970','puntoRojo');
+
+$cnx = mysqli_connect('localhost','USERNAME','PASSWORD','YRevi');
+
 @ session_start();
 
-$root_url = 'http://reportes1.local';
+$root_url = 'http://yrevi.local';
 
 
 if(! isset($_SESSION['login']) && $loop!=true)
