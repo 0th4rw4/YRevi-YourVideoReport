@@ -1,4 +1,4 @@
 ./config/config.php
 ./config/install.php
 ./config/conexion.php
-./upload
+./upload/*
