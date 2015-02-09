@@ -23,8 +23,8 @@ $pass=isset($_POST['password']) ? mysqli_real_escape_string($cnx, $_POST['passwo
 
 $_SESSION['error.log']='No esta registrado';
 
-if( /*!isset($_SESSION['login'])&& */ $user!=false && $pass!=false){
-	//$pass=md5($pass);
+if( !isset($_SESSION['login']) &&  $user!=false && $pass!=false){
+
 	$q = "SELECT usuario, contrasenia, id_nivel, state 
 		FROM usuarios WHERE usuario = '$user' AND (state = 1 OR state = 0) AND ( contrasenia = MD5('$pass') OR contrasenia = '$pass' );";	
 	$filas=mysqli_query($cnx,$q);

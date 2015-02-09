@@ -19,20 +19,11 @@
 $loop=true;
 include_once('config/conexion.php');
 
-/*toDOs
---- agregar capa de JSON
 
-//si es otharwa cargar addAdmin.php
-//si es administrador cargar administradore.php
-//si es usuario cargar usuarios.php
-
-//en este archivo se genera toda la interfaz
-//se recive un json, y se cargan los js segun corresponda
-*/
 if(isset($_SESSION['nivel'])){
 switch( $_SESSION['nivel']){
-  case '4DM1N': header("Location: admin/index.php");break;
-  case 'U53R': header("Location: cliente/index.php");break;
+  case '4DM1N': header("Location: admin/index.php"); break;
+  case 'U53R': header("Location: cliente/index.php"); break;
 }}
 ?>
 <!DOCTYPE html>

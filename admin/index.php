@@ -18,11 +18,11 @@
 */
 include_once('admin.header.php');
 
-if(! ( $_SESSION['nivel']=='4DM1N' ) )
+if(! ( $_SESSION['nivel']=='4DM1N' ) ){
   header("Location: ../index.php");
+}
 else {
 	include('admin.dataEntry.php');
-
 }
 include('../include/footer.php');
 ?>
