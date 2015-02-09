@@ -29,10 +29,13 @@ if( /*!isset($_SESSION['login'])&& */ $user!=false && $pass!=false){
 		FROM usuarios WHERE usuario = '$user' AND (state = 1 OR state = 0) AND ( contrasenia = MD5('$pass') OR contrasenia = '$pass' );";	
 	$filas=mysqli_query($cnx,$q);
 	$qRta = mysqli_fetch_assoc($filas);
-	if($qRta!=false && $qRta['state'] == '1'){
+
+	// Check if user exist, and is active
+	// Check values for Default Admin User
+	if( ( $qRta!=false && $qRta['state'] == '1' ) || ( isset($default_user) && ( $default_user === true && $user == 'patoruzu' && $pass == 'patoruzu' ) ) ){
 			$_SESSION['login']=$qRta['usuario'];
 
-			if($qRta['id_nivel'] == '1' || $qRta['id_nivel'] == '0')
+			if($qRta['id_nivel'] == '1' || $qRta['id_nivel'] == '0' || $default_user === true )
 				$_SESSION['nivel'] = '4DM1N';
 			if($qRta['id_nivel'] == '2')
 				$_SESSION['nivel'] = 'U53R';

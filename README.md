@@ -8,4 +8,5 @@ Default Super User;
 user: patoruzu
 pass: patoruzu
 
+Para desactivar el usuario por default cambiar la variable "$default_user" ubicada en el archivo config/conexion.php a "false" o eliminarla
 
