@@ -18,12 +18,12 @@
 */
 include('conexion.php');
 
-$create = "USE YRevi;
-
+/*
+USE YRevi;
 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
 SET time_zone = '-03:00';
-
-CREATE TABLE IF NOT EXISTS `contacto` (
+*/
+$create = "CREATE TABLE IF NOT EXISTS `contacto` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(200) DEFAULT NULL,
   `id_usuario` int(10) unsigned DEFAULT NULL,
@@ -119,12 +119,9 @@ ALTER TABLE `feedback`
   ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`id_entrada`) REFERENCES `entradas` (`id`) ON UPDATE CASCADE;
 
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `niveles` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `niveles` (`id`) ON UPDATE CASCADE; ";
 
-
-";
-
-$query=mysqli_query($cnx, $create);
+$query = mysqli_query($cnx, $create);
 var_dump($query);
 
 ?>
