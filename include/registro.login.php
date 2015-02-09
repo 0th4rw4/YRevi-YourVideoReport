@@ -32,10 +32,10 @@ if( /*!isset($_SESSION['login'])&& */ $user!=false && $pass!=false){
 
 	// Check if user exist, and is active
 	// Check values for Default Admin User
-	if( ( $qRta!=false && $qRta['state'] == '1' ) || ( isset($default_user) && ( $default_user === true && $user == 'patoruzu' && $pass == 'patoruzu' ) ) ){
+	if( ( $qRta!=false && $qRta['state'] == '1' ) || ( isset($default_user) === true && ( $default_user === true && $user == 'patoruzu' && $pass == 'patoruzu' ) ) ){
 			$_SESSION['login']=$qRta['usuario'];
 
-			if($qRta['id_nivel'] == '1' || $qRta['id_nivel'] == '0' || $default_user === true )
+			if( ( $qRta['id_nivel'] == '1' || $qRta['id_nivel'] == '0' ) || $default_user === true )
 				$_SESSION['nivel'] = '4DM1N';
 			if($qRta['id_nivel'] == '2')
 				$_SESSION['nivel'] = 'U53R';
@@ -50,9 +50,9 @@ if( /*!isset($_SESSION['login'])&& */ $user!=false && $pass!=false){
 	$_SESSION['error.log']=true;
 }
 
-if(isset($_GET['kill']))session_destroy();
-if(isset($_GET['new']))$_SESSION['new']=true;
-if(isset($_GET['close']))$_SESSION['new']=false;
+if(isset($_GET['kill'])) session_destroy();
+if(isset($_GET['new'])) $_SESSION['new']=true;
+if(isset($_GET['close'])) $_SESSION['new']=false;
 
 header("Location: $_SERVER[HTTP_REFERER]");	
 
